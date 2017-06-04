@@ -1,0 +1,23 @@
+td{
+	border:1px solid black;
+	border-right-color:#c0c0c0;
+	border-bottom-color:#c0c0c0;
+}
+.t1,.t2{
+	border:1px solid #c0c0c0;
+}
+.t1{
+	float:left;
+}
+.t2{
+	clear:left;
+}
+.t2 td{
+	vertical-align:top;
+}
+a{
+	color:#72ace3;
+}
+.t2 p{
+	margin:1px;
+}
