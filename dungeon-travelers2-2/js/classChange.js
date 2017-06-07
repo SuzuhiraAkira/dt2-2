@@ -1,29 +1,23 @@
-window.onload=function(){
-	lv15ClassChange(0,null);
-	lv30ClassChange(0,null);
-};
 function pageReset(){
-	console.log("aaa");
-	lv15ClassChange(0,null);
 	lv15ClassChange(0,null);
 }
 
 function lv15ClassChange(v,job){
 	switch (parseInt(v)) {
 	case 0:
-		getClass("lv15all","lv15a");
-		getClass("lv30Class","lv30classA","lv30classB",v);
-		getClass("lv30all","lv30a",null,v);
+		showDiv("lv15all","lv15a");
+		v=showSelect("lv30","lv30classA","lv30classB",v);
+		lv30ClassChange(v,job)
 		break;
 	case 1:
-		getClass("lv15all","lv15b");
-		getClass("lv30Class","lv30classB","lv30classC",v);
-		getClass("lv30all","lv30b",null,v);
+		showDiv("lv15all","lv15b");
+		v=showSelect("lv30","lv30classB","lv30classC",v);
+		lv30ClassChange(v,job)
 		break;
 	case 2:
-		getClass("lv15all","lv15c");
-		getClass("lv30Class","lv30classC","lv30classD",v);
-		getClass("lv30all","lv30c",null,v);
+		showDiv("lv15all","lv15c");
+		v=showSelect("lv30","lv30classC","lv30classD",v);
+		lv30ClassChange(v,job)
 		break;
 	}
 	skill(job);
@@ -32,38 +26,46 @@ function lv15ClassChange(v,job){
 function lv30ClassChange(v,job){
 	switch (parseInt(v)) {
 	case 0:
-		getClass("lv30all","lv30a");
+		showDiv("lv30all","lv30a");
 		break;
 	case 1:
-		getClass("lv30all","lv30b");
+		showDiv("lv30all","lv30b");
 		break;
 	case 2:
-		getClass("lv30all","lv30c");
+		showDiv("lv30all","lv30c");
 		break;
 	case 3:
-		getClass("lv30all","lv30d");
+		showDiv("lv30all","lv30d");
 		break;
 	}
 	skill(job);
 }
 
-function getClass(className,id1,id2,v){
-	var name=document.getElementsByClassName(className);
-	for(var i=0;i<name.length;i++){
-		name[i].style.display="none";
+function showDiv(id,id1){
+	var td=document.getElementById(id);
+	var divs=td.getElementsByTagName("div");
+	for(var i=0;i<divs.length;i++){
+		divs[i].style.display="none";
 	}
 	document.getElementById(id1).style.display="block";
-	if(id2){
-		document.getElementById(id2).style.display="block";
+}
+
+function showSelect(id,id1,id2,v){
+	var td=document.getElementById(id);
+	var divs=td.getElementsByTagName("option");
+	for(var i=0;i<divs.length;i++){
+		divs[i].style.display="none";
 	}
-	if(v){
-		v=parseInt(v);
-		var lv30=document.getElementById("lv30");
-		var lv30v=lv30.options[lv30.selectedIndex].value;
-		if(lv30v!=v||lv30v!=v+1){
-			document.getElementById("lv30").value = v;
-		}
+	document.getElementById(id1).style.display="block";
+	document.getElementById(id2).style.display="block";
+	v=parseInt(v);
+	var lv30=document.getElementById("lv30");
+	var lv30v=lv30.options[lv30.selectedIndex].value;
+	if(lv30v!=v&&lv30v!=v+1){
+		document.getElementById("lv30").value = v;
+		lv30v=v;
 	}
+	return lv30v;
 }
 
 /*

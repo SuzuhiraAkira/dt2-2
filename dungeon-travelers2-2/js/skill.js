@@ -96,13 +96,13 @@ function skill(job){
 		result=sp-MUSpAll(classes);
 		break;
 	case "SC":
-		result=sp-FTSpAll(classes);
+		result=sp-SCSpAll(classes);
 		break;
 	case "MA":
-		result=sp-FTSpAll(classes);
+		result=sp-MASpAll(classes);
 		break;
 	case "SP":
-		result=sp-FTSpAll(classes);
+		result=sp-SPSpAll(classes);
 		break;
 	}
 	document.getElementById("sp").value=result;
