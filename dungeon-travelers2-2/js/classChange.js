@@ -1,5 +1,21 @@
-function pageReset(){
-	lv15ClassChange(0,null);
+function skillReset(job){
+	var selects=$("#all select");
+	for(var i=0;i<selects.length;i++){
+		selects[i].value=0;
+	}
+	skill(job);
+}
+
+function allReset(job){
+	var texts=$("#t1 input");
+	for(var i=0;i<texts.length;i++){
+		texts[i].value=0;
+	}
+	var selects=$("#all select");
+	for(var i=0;i<selects.length;i++){
+		selects[i].value=0;
+	}
+	skill(job);
 }
 
 function lv15ClassChange(v,job){

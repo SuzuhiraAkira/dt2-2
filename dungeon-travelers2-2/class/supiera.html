@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>スピエラー系</title>
+<link rel="stylesheet" href="../css/class.css"/>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../js/page.js"></script>
+<script src="../js/classChange.js"></script>
+<script src="../js/skill.js"></script>
+<script src="../js/SPSkill.js"></script>
+</head>
+<body>
+	<div>
+		<table id="t1">
+			<tr>
+				<td>指定LV<input type="text" value=0 maxlength="2" size=3 id="lv" onfocus="getFocus(this);" onkeydown="return onlyNumber(event);" onchange="lvInput('SP');"/></td>
+				<td>残りSP<input type="text" value=0 size=3 readonly id="sp"/></td>
+				<td>スキルの素<input type="text" value=0 maxlength="2" size=3 id="moto1" onfocus="getFocus(this);" onkeydown="return onlyNumber(event);" onchange="motoInput('SP');"/></td>
+				<td>大スキルの素<input type="text" value=0 maxlength="2" size=3 id="moto2" onfocus="getFocus(this);" onkeydown="return onlyNumber(event);" onchange="motoInput('SP');"/></td>
+			</tr>
+		</table>
+		<input type="button" value="リセット" onclick="skillReset('SP');" ondblclick="allReset('SP');"/>
+		<table id="t2">
+			<thead>
+				<tr>
+					<td>lv1職</td>
+					<td>lv15職</td>
+					<td>lv30職</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>スピエラー</td>
+					<td>
+						<select id="lv15" onchange="lv15ClassChange(this.options[this.selectedIndex].value,'SP');">
+							<option value="0" id="lv15classA">ドールマスター</option>
+							<option value="1" id="lv15classB">トリックスター</option>
+						</select>
+					</td>
+					<td>
+						<select id="lv30" onchange="lv30ClassChange(this.options[this.selectedIndex].value,'SP');">
+							<option value="0" id="lv30classA">ソウルサモナー</option>
+							<option value="1" id="lv30classB">パピヨン</option>
+							<option value="2" id="lv30classC">ジョーカー</option>
+						</select>
+					</td>
+				</tr>
+				<tr id="all">
+					<td>
+						<table id="SP"></table>
+					</td>
+					<td id="lv15all">
+						<div id="lv15a">
+							<table id="DM"></table>
+						</div>
+						<div id="lv15b">
+							<table id="TS"></table>
+						</div>
+					</td>
+					<td id="lv30all">
+						<div id="lv30a">
+							<table id="SS"></table>
+						</div>
+						<div id="lv30b">
+							<table id="PA"></table>
+						</div>
+						<div id="lv30c">
+							<table id="JO"></table>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p><a href="../dungeon-travelers2-2.html">TOPへ戻る</a></p>
+</body>
+</html>

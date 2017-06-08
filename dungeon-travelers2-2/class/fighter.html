@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>ファイター系</title>
 <link rel="stylesheet" href="../css/class.css"/>
+<script src="../js/jquery-3.2.1.min.js"></script>
 <script src="../js/page.js"></script>
 <script src="../js/classChange.js"></script>
 <script src="../js/skill.js"></script>
@@ -11,68 +12,66 @@
 </head>
 <body>
 	<div>
-		<form>
-			<table class="t1">
+		<table id="t1">
+			<tr>
+				<td>指定LV<input type="text" value=0 maxlength="2" size=3 id="lv" onfocus="getFocus(this);" onkeydown="return onlyNumber(event);" onchange="lvInput('FT');"/></td>
+				<td>残りSP<input type="text" value=0 size=3 readonly id="sp"/></td>
+				<td>スキルの素<input type="text" value=0 maxlength="2" size=3 id="moto1" onfocus="getFocus(this);" onkeydown="return onlyNumber(event);" onchange="motoInput('FT');"/></td>
+				<td>大スキルの素<input type="text" value=0 maxlength="2" size=3 id="moto2" onfocus="getFocus(this);" onkeydown="return onlyNumber(event);" onchange="motoInput('FT');"/></td>
+			</tr>
+		</table>
+		<input type="button" value="リセット" onclick="skillReset('FT');" ondblclick="allReset('FT');"/>
+		<table id="t2">
+			<thead>
 				<tr>
-					<td>指定LV<input type="text" value=0 size=3 id="lv" onfocus="getFocus('lv');" onchange="lvInput('FT');"/></td>
-					<td>残りSP<input type="text" value=0 size=3 readonly id="sp"/></td>
-					<td>スキルの素<input type="text" value=0 size=3 id="moto1" onfocus="getFocus('moto1');" onchange="motoInput('FT');"/></td>
-					<td>大スキルの素<input type="text" value=0 size=3 id="moto2" onfocus="getFocus('moto2');" onchange="motoInput('FT');"/></td>
+					<td>lv1職</td>
+					<td>lv15職</td>
+					<td>lv30職</td>
 				</tr>
-			</table>
-			<input type="reset" value="リセット"/>
-			<table class="t2">
-				<thead>
-					<tr>
-						<td>lv1職</td>
-						<td>lv15職</td>
-						<td>lv30職</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>ファイター</td>
-						<td>
-							<select id="lv15" onchange="lv15ClassChange(this.options[this.selectedIndex].value,'FT');">
-								<option value="0" id="lv15classA">パラディン</option>
-								<option value="1" id="lv15classB">バーサーカー</option>
-							</select>
-						</td>
-						<td>
-							<select id="lv30" onchange="lv30ClassChange(this.options[this.selectedIndex].value,'FT');">
-								<option value="0" id="lv30classA">ヴァルキリー</option>
-								<option value="1" id="lv30classB">侍</option>
-								<option value="2" id="lv30classC">ダークロード</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<table id="FT"></table>
-						</td>
-						<td id="lv15all">
-							<div id="lv15a">
-								<table id="PL"></table>
-							</div>
-							<div id="lv15b">
-								<table id="BE"></table>
-							</div>
-						</td>
-						<td id="lv30all">
-							<div id="lv30a">
-								<table id="VL"></table>
-							</div>
-							<div id="lv30b">
-								<table id="SA"></table>
-							</div>
-							<div id="lv30c">
-								<table id="DL"></table>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</form>
+			</thead>
+			<tbody>
+				<tr>
+					<td>ファイター</td>
+					<td>
+						<select id="lv15" onchange="lv15ClassChange(this.options[this.selectedIndex].value,'FT');">
+							<option value="0" id="lv15classA">パラディン</option>
+							<option value="1" id="lv15classB">バーサーカー</option>
+						</select>
+					</td>
+					<td>
+						<select id="lv30" onchange="lv30ClassChange(this.options[this.selectedIndex].value,'FT');">
+							<option value="0" id="lv30classA">ヴァルキリー</option>
+							<option value="1" id="lv30classB">侍</option>
+							<option value="2" id="lv30classC">ダークロード</option>
+						</select>
+					</td>
+				</tr>
+				<tr id="all">
+					<td>
+						<table id="FT"></table>
+					</td>
+					<td id="lv15all">
+						<div id="lv15a">
+							<table id="PL"></table>
+						</div>
+						<div id="lv15b">
+							<table id="BE"></table>
+						</div>
+					</td>
+					<td id="lv30all">
+						<div id="lv30a">
+							<table id="VL"></table>
+						</div>
+						<div id="lv30b">
+							<table id="SA"></table>
+						</div>
+						<div id="lv30c">
+							<table id="DL"></table>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<p><a href="../dungeon-travelers2-2.html">TOPへ戻る</a></p>
 </body>

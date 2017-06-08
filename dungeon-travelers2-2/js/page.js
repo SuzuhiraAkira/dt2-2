@@ -16,14 +16,9 @@ function createTr(basicJob,job,index,skillName,maxLv){
 	td1.innerHTML=skillName;
 	var select=document.createElement("select");
 	td2.appendChild(select);
-	
-	select.setAttribute("onchange","skill(\""+basicJob+"\");");
-	
-	/*
 	select.onchange=function(){
 		skill(basicJob);
 	};
-	*/
 	select.id=job+alpha[index];
 	for(var i=0;i<=maxLv;i++){
 		var option=document.createElement("option");

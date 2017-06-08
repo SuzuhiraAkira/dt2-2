@@ -1,5 +1,19 @@
-function getFocus(id){
-	document.getElementById(id).select();
+function getFocus(text){
+	text.select();
+}
+function onlyNumber(e){
+	var keynum;
+
+	if(window.event){
+		keynum = e.keyCode;
+	}else if(e.which){
+		keynum = e.which;
+	}
+
+	if(keynum>=48&&keynum<=57||keynum==8||keynum==13||keynum==37||keynum==39||keynum==46||keynum==108){
+		return true;
+	}
+	return false;
 }
 
 function lvInput(job){
@@ -9,8 +23,9 @@ function lvInput(job){
 function setSp(){
 	var lv=document.getElementById("lv").value;
 	var sp=0;
-	if(isNaN(lv)||!lv||lv<0||lv>99){
-		return;
+	if(!lv){
+		document.getElementById("lv").value=0;
+		lv=0;
 	}
 	lv=parseInt(lv);
 	if(lv==0){
@@ -61,16 +76,18 @@ function motoInput(job){
 
 function skillnomoto(){
 	var moto1=document.getElementById("moto1").value;
-	if(isNaN(moto1)||!moto1||moto1<0||moto1>99){
-		return;
+	if(!moto1){
+		document.getElementById("moto1").value=0;
+		moto1=0;
 	}
 	moto1=parseInt(moto1);
 	var sp=document.getElementById("sp").value;
 	sp=parseInt(sp);
 	document.getElementById("sp").value=sp+moto1*3;
 	var moto2=document.getElementById("moto2").value;
-	if(isNaN(moto2)||!moto2||moto2<0||moto2>99){
-		return;
+	if(!moto2){
+		document.getElementById("moto2").value=0;
+		moto2=0;
 	}
 	moto2=parseInt(moto2);
 	sp=document.getElementById("sp").value;
@@ -90,19 +107,19 @@ function skill(job){
 	var result=0;
 	switch (job) {
 	case "FT":
-		result=sp-FTSpAll(classes);
+		result=sp-ftSpAll(classes);
 		break;
 	case "MU":
-		result=sp-MUSpAll(classes);
+		result=sp-muSpAll(classes);
 		break;
 	case "SC":
-		result=sp-SCSpAll(classes);
+		result=sp-scSpAll(classes);
 		break;
 	case "MA":
-		result=sp-MASpAll(classes);
+		result=sp-maSpAll(classes);
 		break;
 	case "SP":
-		result=sp-SPSpAll(classes);
+		result=sp-spSpAll(classes);
 		break;
 	}
 	document.getElementById("sp").value=result;
@@ -111,6 +128,16 @@ function skill(job){
 	}else{
 		document.getElementById("sp").style.color="black";
 	}
+}
+
+function all_sp(job,job_sp){
+	var alpha=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+	var all=0;
+	for(var i=0;i<job_sp.length;i++){
+		var jobLv=document.getElementById(job+alpha[i]).selectedIndex;
+		all+=job_sp[i](jobLv);
+	}
+	return all;
 }
 
 function sp1(lv){
@@ -122,12 +149,25 @@ function sp2(lv){
 function sp3(lv){
 	return lv*3*(lv+1)/2;
 }
+function sp5(lv){
+	return lv*5*(lv+1)/2;
+}
+function sp10(lv){
+	return lv*10*(lv+1)/2;
+}
+function sp20(lv){
+	return lv*20*(lv+1)/2;
+}
 function sp_arr0(lv){
 	var sp=[0,1,2,5,8,13,18,25,32];
 	return sp[lv];
 }
 function sp_arr1(lv){
 	var sp=[0,1,2,4,6,9,12,16,20];
+	return sp[lv];
+}
+function sp_arr2(lv){
+	var sp=[0,2,6,12,20,30,41,53,66,80,95];
 	return sp[lv];
 }
 function sp_squ(lv){
